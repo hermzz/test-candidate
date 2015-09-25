@@ -1,0 +1,11 @@
+<table class="table table-bordered  table-striped">
+    <thead>
+        <tr>
+            <td><a ng-click="ctrl.sortCandidates()">Name</td>
+            <td>Enabled</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="candidate in ctrl.candidates" candidate-row candidate="candidate"></tr>
+    </tbody>
+</table>
