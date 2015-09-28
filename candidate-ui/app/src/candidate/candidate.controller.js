@@ -58,13 +58,6 @@
                             }
                         });
                     });
-                    /*angular.forEach(self.candidates, function (value, key) {
-                        var position = ids.indexOf(value.id);
-                        console.log(value.id, ids, position);
-                        if (position > -1) {
-                            self.candidates.splice(position, 1);
-                        }
-                    });*/
                 });
         };
     }
