@@ -6,10 +6,11 @@
         .controller('CandidateController', [
             'CandidateService',
             '$filter',
+            '$scope',
             CandidateController
         ]);
 
-    function CandidateController(CandidateService, $filter) {
+    function CandidateController(CandidateService, $filter, $scope) {
         var self = this;
 
         self.candidates = [];
@@ -19,6 +20,19 @@
 
         self.sortCandidates = function() {
             self.candidates = $filter('orderBy')(self.candidates, 'name');
+        };
+
+        self.addCandidate = function() {
+            CandidateService.add($scope.ctrl.candidateName, true).success(function () {
+                var highestId = 0;
+                angular.forEach(self.candidates, function(value, key) {
+                    if (value.id > highestId) {
+                        highestId = value.id;
+                    }
+                });
+
+                self.candidates.push(new Object({id: highestId + 1, name: $scope.ctrl.candidateName, enabled: true}));
+            });
         };
     }
 

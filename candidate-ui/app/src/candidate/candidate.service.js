@@ -21,5 +21,10 @@
         function edit(id, enabled) {
             return $http.put('/candidate/' + id, {enabled: enabled});
         }
+
+        this.add = add;
+        function add(name, enabled) {
+            return $http.post('/candidate', {name: name, enabled: enabled});
+        }
     }
 })();
