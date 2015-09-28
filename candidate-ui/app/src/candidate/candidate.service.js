@@ -26,5 +26,10 @@
         function add(name, enabled) {
             return $http.post('/candidate', {name: name, enabled: enabled});
         }
+
+        this.remove = remove;
+        function remove(ids) {
+            return $http.post('/candidate/delete', ids);
+        }
     }
 })();

@@ -18,9 +18,10 @@
             restrict : 'A',
             scope: {
                 candidate : '=',
+                clicked: '='
             },
             link: function($scope, elem, attrs) {
-                $scope.$watch('ctrl.candidate.enabled', function(oldValue, newValue) {
+                $scope.$watch('ctrl.candidate.enabled', function (oldValue, newValue) {
                     if (oldValue != newValue) {
                         CandidateService.edit($scope.ctrl.candidate.id, newValue);
                     }
