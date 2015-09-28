@@ -18,8 +18,15 @@
             self.candidates = response.data;
         });
 
-        self.sortCandidates = function() {
-            self.candidates = $filter('orderBy')(self.candidates, 'name');
+        self.orderBy = false;
+        self.reversed = false;
+        self.sortCandidates = function(field) {
+            if (field == self.orderBy) {
+                self.reversed = !self.reversed;
+            }
+
+            self.orderBy = field;
+            self.candidates = $filter('orderBy')(self.candidates, field, self.reversed);
         };
 
         self.addCandidate = function() {
