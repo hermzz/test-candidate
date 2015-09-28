@@ -13,11 +13,13 @@
         var self = this;
 
         this.get = get;
-
-        function get(){
+        function get() {
             return $http.get('/candidate');
         }
 
+        this.edit = edit;
+        function edit(id, enabled) {
+            return $http.put('/candidate/' + id, {enabled: enabled});
+        }
     }
-
 })();
